@@ -9,7 +9,7 @@ const SCM = SC + 'market/';
  * Feel free to ignore this.
  */
 const Contains = {
-    web: '33779068',
+    web: 'g_steamID',
     json: '"success"'
 };
 
@@ -29,7 +29,7 @@ module.exports = {
 
         return {
             contains: Contains.web,
-            url: `${SCM}search?${parameters}`
+            url: `${SCM}search?${parameters}&l=english`
         };
     },
     /**
@@ -92,9 +92,11 @@ module.exports = {
      * Gets the listings page using appID and marketHashName
      */
     'listings': function(appID, marketHashName) {
-        return {
-            contains: Contains.web,
-            url: `${SCM}listings/${appID}/${marketHashName}`
+        // Return as a function bcus of Base64 and I want to use this.url m8
+        return new function() {
+            this.contains = Contains.web;
+            this.url = `${SCM}listings/${appID}/${encodeURIComponent(marketHashName)}?l=english`;
+            this.base64 = new Buffer(this.url).toString('base64');
         };
     },
     /**

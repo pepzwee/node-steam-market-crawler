@@ -27,9 +27,10 @@ module.exports = {
             }).join('&');
         }
 
-        return {
-            contains: Contains.web,
-            url: `${SCM}search?${parameters}&l=english`
+        return new function() {
+            this.contains = Contains.web;
+            this.url = `${SCM}search?${parameters}&l=english`;
+            this.base64 = new Buffer(this.url).toString('base64');
         };
     },
     /**
@@ -56,43 +57,45 @@ module.exports = {
             }).join('&');
         }
 
-        return {
-            contains: Contains.json,
-            url: `${SCM}search/render?${parameters}`
+        return new function() {
+            this.contains = Contains.json;
+            this.url = `${SCM}search/render?${parameters}`;
+            this.base64 = new Buffer(this.url).toString('base64');
         };
     },
     /**
      * Gets the popular listings
      */
     'popular': function(start, count) {
-        return {
-            contains: Contains.json,
-            url: `${SCM}popular?language=english&currency=1&start=${start}&count=${count}`
+        return new function() {
+            this.contains = Contains.json;
+            this.url = `${SCM}popular?language=english&currency=1&start=${start}&count=${count}`;
+            this.base64 = new Buffer(this.url).toString('base64');
         };
     },
     /**
      * Gets the recently created listings
      */
     'recent': function() {
-        return {
-            contans: Contans.json,
-            url: `${SCM}recent?country=US&language=english&currency=1`
+        return new function() {
+            this.contans = Contans.json;
+            this.url = `${SCM}recent?country=US&language=english&currency=1`;
+            this.base64 = new Buffer(this.url).toString('base64');
         };
     },
     /**
      * Gets the recently completed/sold listings
      */
     'recentcompleted': function() {
-        return {
-            contains: Contains.json,
-            url: `${SCM}recentcompleted`
+        return new function() {
+            this.contains = Contains.json;
+            this.url = `${SCM}recentcompleted`;
         };
     },
     /**
      * Gets the listings page using appID and marketHashName
      */
     'listings': function(appID, marketHashName) {
-        // Return as a function bcus of Base64 and I want to use this.url m8
         return new function() {
             this.contains = Contains.web;
             this.url = `${SCM}listings/${appID}/${encodeURIComponent(marketHashName)}?l=english`;
@@ -103,18 +106,20 @@ module.exports = {
      * Gets the item activity on the listings page
      */
     'itemordersactivity': function(nameID) {
-        return {
-            contains: Contains.json,
-            url: `${SCM}itemordersactivity?language=english&currency=1&item_nameid=${nameID}`
+        return new function() {
+            this.contains = Contains.json;
+            this.url = `${SCM}itemordersactivity?language=english&currency=1&item_nameid=${nameID}`;
+            this.base64 = new Buffer(this.url).toString('base64');
         };
     },
     /**
      * Gets the item sale history on the listings page
      */
     'itemordershistogram': function(nameID) {
-        return {
-            contains: Contains.json,
-            url: `${SCM}itemordershistogram?language=english&currency=1&item_nameid=${nameID}`
+        return new function() {
+            this.contains = Contains.json;
+            this.url = `${SCM}itemordershistogram?language=english&currency=1&item_nameid=${nameID}`;
+            this.base64 = new Buffer(this.url).toString('base64');
         };
     }
 };

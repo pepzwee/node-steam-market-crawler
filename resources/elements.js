@@ -22,6 +22,6 @@ exports.MarketListing = {
 
 exports.MarketItem = {
     market_name: 'h1#largeiteminfo_item_name',
-    market_hash_name: '.market_listing_nav a',
+    market_name_alt: '.market_listing_nav a',
     image: '.market_listing_largeimage img'
 }

@@ -78,7 +78,7 @@ module.exports = {
      */
     'recent': function() {
         return new function() {
-            this.contans = Contans.json;
+            this.contans = Contains.json;
             this.url = `${SCM}recent?country=US&language=english&currency=1`;
             this.base64 = new Buffer(this.url).toString('base64');
         };

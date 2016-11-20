@@ -24,6 +24,6 @@ module.exports = {
         "assets": /(g_rgAssets) = ([\"\\']?)(.*?)\};/,
         "medianSalePrices": /(line1)\=([^)]+)\;/,
         "nameID": /(Market_LoadOrderSpread)\( ([^)]+) \)/,
-        "borderColor": /(border-color: #)([^)]+)\;.*/
+        "borderColor": /(border-color: #)([^)]+)\;.?/
     }
 }

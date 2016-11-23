@@ -23,7 +23,6 @@ module.exports = {
         'appContextData': /(g_rgAppContextData) = ([\"\\']?)(.*?)\};/,
         'assets': /(g_rgAssets) = ([\"\\']?)(.*?)\};/,
         'medianSalePrices': /(line1)\=([^)]+)\;/,
-        'nameID': /(Market_LoadOrderSpread)\( ([^)]+) \)/,
-        'borderColor': /(border-color: #)([^)]+)\;.?/
+        'nameID': /(Market_LoadOrderSpread)\( ([^)]+) \)/
     }
 }

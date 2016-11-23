@@ -45,18 +45,22 @@ module.exports = function($) {
 
         // Return a match that is not false nor undefined
         return _.find(elements, (element) => {
-            return element !== false && typeof element !== 'undefined';
+            // Check if element has any value
+            return element !== false && typeof element !== 'undefined' && element.length >= 1;
         });
     };
 
     dom.marketName = function() {
         // Find a possible match from array
         for(let i in dom.selectors.market_name) {
+            // current selector from the array
             let element = dom.selectors.market_name[i];
             // Cheerio does not support ":last" and ":first" at the moment so we have to use .first() and .last()
             if(element.indexOf(':') !== -1) {
                 element = element.split(':');
-                let selector = $(element[0])[element[1]](); // element[1] is either "first" or "last"
+                // element[0] is the selector
+                // element[1] is either "first" or "last"
+                let selector = $(element[0])[element[1]]();
                 // Check if it exists and has any content
                 if(selector.length && selector.text().trim().length >= 1) {
                     return selector.text();
@@ -81,9 +85,11 @@ module.exports = function($) {
 
         // Return a match that is not false nor undefined
         let image = _.find(elements, (element) => {
-            return element !== false && typeof element !== 'undefined';
+            // Check if element has any value
+            return element !== false && typeof element !== 'undefined' && element.length >= 1;
         });
 
+        // If we didn't get an image (some Steam items trully have no image) return null
         if( ! image) {
             return null;
         }
@@ -95,12 +101,13 @@ module.exports = function($) {
     dom.isSold = function() {
         // All possible matches
         const elements = [
-            $( dom.selectors.normal_price[0] ).eq(1).text(),
-            $( dom.selectors.normal_price[1] ).text()
+            $( dom.selectors.normal_price[0] ).eq(1).text().trim(),
+            $( dom.selectors.normal_price[1] ).text().trim()
         ];
 
         let isSold = _.find(elements, (element) => {
-            return element !== false && typeof element !== 'undefined';
+            // Check if element has any value
+            return element !== false && typeof element !== 'undefined' && element.length >= 1;
         });
 
         // Item has been sold already
@@ -118,28 +125,32 @@ module.exports = function($) {
     dom.normalPrice = function() {
         // All possible matches
         const elements = [
-            $( dom.selectors.normal_price[0] ).eq(1).text(),
-            $( dom.selectors.normal_price[1] ).text()
+            $( dom.selectors.normal_price[0] ).eq(1).text().trim(),
+            $( dom.selectors.normal_price[1] ).text().trim()
         ];
 
         let normalPrice = _.find(elements, (element) => {
-            return element !== false && typeof element !== 'undefined';
+            // Check if element has any value
+            return element !== false && typeof element !== 'undefined' && element.length >= 1;
         });
 
+        // Return value as float, remove currency symbol
         return parseFloat(normalPrice.replace('$', ''));
     };
 
     dom.salePrice = function() {
         // All possible matches
         const elements = [
-            $( dom.selectors.sale_price[0] ).text(),
-            $( dom.selectors.sale_price[1] ).text()
+            $( dom.selectors.sale_price[0] ).text().trim(),
+            $( dom.selectors.sale_price[1] ).text().trim()
         ];
 
         let salePrice = _.find(elements, (element) => {
-            return element !== false && typeof element !== 'undefined';
+            // Check if element has any value
+            return element !== false && typeof element !== 'undefined' && element.length >= 1;
         });
 
+        // Return value as float, remove currency symbol
         return parseFloat(salePrice.replace('$', ''));
     };
 

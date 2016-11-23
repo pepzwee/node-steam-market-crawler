@@ -1,4 +1,4 @@
-"use strict"
+'use strict';
 
 module.exports = {
     get: function(regex, string, index, json) {
@@ -8,7 +8,7 @@ module.exports = {
                 regex.lastIndex++;
             }
             let value = null;
-            if(typeof m[index] !== "undefined") value = m[index];
+            if(typeof m[index] !== 'undefined') value = m[index];
             if(json && value) {
                 try { return JSON.parse(value); } catch(e) {
                     // Sometimes my Regex is shit and it is missing an "}" in the end, try to check again
@@ -20,10 +20,9 @@ module.exports = {
         }
     },
     listings: {
-        "appContextData": /(g_rgAppContextData) = ([\"\\']?)(.*?)\};/,
-        "assets": /(g_rgAssets) = ([\"\\']?)(.*?)\};/,
-        "medianSalePrices": /(line1)\=([^)]+)\;/,
-        "nameID": /(Market_LoadOrderSpread)\( ([^)]+) \)/,
-        "borderColor": /(border-color: #)([^)]+)\;.?/
+        'appContextData': /(g_rgAppContextData) = ([\"\\']?)(.*?)\};/,
+        'assets': /(g_rgAssets) = ([\"\\']?)(.*?)\};/,
+        'medianSalePrices': /(line1)\=([^)]+)\;/,
+        'nameID': /(Market_LoadOrderSpread)\( ([^)]+) \)/
     }
 }

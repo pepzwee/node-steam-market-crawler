@@ -1,7 +1,7 @@
-"use strict"
+'use strict';
 
 // SteamCommunity URL's
-const SC  = 'http://steamcommunity.com/';
+const SC = 'http://steamcommunity.com/';
 const SCM = SC + 'market/';
 /**
  * This is solely here because of SteamApis.com,
@@ -42,12 +42,12 @@ module.exports = {
         // Default search params if object was not set.
         if( ! object) {
             object = {
-                query: "",
+                query: '',
                 start: 0,
                 count: 10,
                 search_descriptions: 0,
-                sort_column: "popular",
-                sort_dir: "desc"
+                sort_column: 'popular',
+                sort_dir: 'desc'
             }
         }
 
@@ -78,7 +78,7 @@ module.exports = {
      */
     'recent': function() {
         return new function() {
-            this.contans = Contans.json;
+            this.contains = Contains.json;
             this.url = `${SCM}recent?country=US&language=english&currency=1`;
             this.base64 = new Buffer(this.url).toString('base64');
         };

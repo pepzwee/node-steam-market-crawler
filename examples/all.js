@@ -1,3 +1,5 @@
+'use strict';
+
 const SteamMarketCrawler = require('../lib/index'); // require('node-steam-market-crawler');
 const MarketCrawler = new SteamMarketCrawler();
 

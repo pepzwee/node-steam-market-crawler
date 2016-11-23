@@ -8,9 +8,9 @@ module.exports = function($) {
     dom.selectors = {
         row: '.market_listing_row_link',
         market_name: [
-            '.market_listing_item_name',
-            '.market_listing_item_name_link',
-            'h1#largeiteminfo_item_name',
+            '.market_listing_item_name:first',
+            '.market_listing_item_name_link:first',
+            'h1#largeiteminfo_item_name:first',
             '.market_listing_nav a:last'
         ],
         market_link: [

@@ -44,10 +44,13 @@ module.exports = function($) {
         ];
 
         // Return a match that is not false nor undefined
-        return _.find(elements, (element) => {
+        let url = _.find(elements, (element) => {
             // Check if element has any value
             return element !== false && typeof element !== 'undefined' && element.length >= 1;
         });
+
+        // Replace HTTPS with HTTP if possible and return value
+        return url.replace('https://', 'http://') || null;
     };
 
     dom.marketName = function() {

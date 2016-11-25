@@ -30,7 +30,7 @@ module.exports = {
         return new function() {
             this.contains = Contains.web;
             this.url = `${SCM}search?${parameters}&l=english`;
-            this.base64 = new Buffer(this.url).toString('base64');
+            this.base64 = encodeURIComponent(new Buffer(this.url).toString('base64'));
         };
     },
     /**
@@ -60,7 +60,7 @@ module.exports = {
         return new function() {
             this.contains = Contains.json;
             this.url = `${SCM}search/render?${parameters}`;
-            this.base64 = new Buffer(this.url).toString('base64');
+            this.base64 = encodeURIComponent(new Buffer(this.url).toString('base64'));
         };
     },
     /**
@@ -70,7 +70,7 @@ module.exports = {
         return new function() {
             this.contains = Contains.json;
             this.url = `${SCM}popular?language=english&currency=1&start=${start}&count=${count}`;
-            this.base64 = new Buffer(this.url).toString('base64');
+            this.base64 = encodeURIComponent(new Buffer(this.url).toString('base64'));
         };
     },
     /**
@@ -80,7 +80,7 @@ module.exports = {
         return new function() {
             this.contains = Contains.json;
             this.url = `${SCM}recent?country=US&language=english&currency=1`;
-            this.base64 = new Buffer(this.url).toString('base64');
+            this.base64 = encodeURIComponent(new Buffer(this.url).toString('base64'));
         };
     },
     /**
@@ -99,7 +99,7 @@ module.exports = {
         return new function() {
             this.contains = Contains.web;
             this.url = `${SCM}listings/${appID}/${encodeURIComponent(marketHashName)}?l=english`;
-            this.base64 = new Buffer(this.url).toString('base64');
+            this.base64 = encodeURIComponent(new Buffer(this.url).toString('base64'));
         };
     },
     /**
@@ -109,7 +109,7 @@ module.exports = {
         return new function() {
             this.contains = Contains.json;
             this.url = `${SCM}itemordersactivity?language=english&currency=1&item_nameid=${nameID}`;
-            this.base64 = new Buffer(this.url).toString('base64');
+            this.base64 = encodeURIComponent(new Buffer(this.url).toString('base64'));
         };
     },
     /**
@@ -119,7 +119,7 @@ module.exports = {
         return new function() {
             this.contains = Contains.json;
             this.url = `${SCM}itemordershistogram?language=english&currency=1&item_nameid=${nameID}`;
-            this.base64 = new Buffer(this.url).toString('base64');
+            this.base64 = encodeURIComponent(new Buffer(this.url).toString('base64'));
         };
     }
 };

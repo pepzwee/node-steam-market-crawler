@@ -79,6 +79,15 @@ module.exports = function($) {
         return false;
     };
 
+    dom.borderColor = function() {
+        const element = $( dom.selectors.image[0] );
+        if(element.attr('style')) {
+            return element.css('border-color');
+        } else {
+            return null;
+        }
+    };
+
     dom.image = function() {
         // All possible matches
         const elements = [

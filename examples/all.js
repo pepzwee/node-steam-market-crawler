@@ -23,16 +23,15 @@ MarketCrawler.getSearchRender({
     console.log(reason);
 });
 
-// getListings
+// getListings without Histogram
 MarketCrawler.getListings(730, 'AK-47 | Redline (Field-Tested)').then((listing) => {
     console.log(listing);
-    // getHistogram
-    listing.getHistogram().then((histogram) => {
-        console.log(histogram);
-        // console.log(listing.histogram);
-    }).catch((reason) => {
-        console.log(reason);
-    });
+}).catch((reason) => {
+    console.log(reason);
+});
+// getListings with Histogram
+MarketCrawler.getListings(730, 'AK-47 | Redline (Field-Tested)', true).then((listing) => {
+    console.log(listing);
 }).catch((reason) => {
     console.log(reason);
 });

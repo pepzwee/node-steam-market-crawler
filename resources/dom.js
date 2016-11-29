@@ -147,7 +147,7 @@ module.exports = function($) {
         });
 
         // Return value as float, remove currency symbol
-        return parseFloat(normalPrice.replace('$', ''));
+        return parseFloat(normalPrice.replace('$', '')) || null;
     };
 
     dom.salePrice = function() {
@@ -163,7 +163,7 @@ module.exports = function($) {
         });
 
         // Return value as float, remove currency symbol
-        return parseFloat(salePrice.replace('$', ''));
+        return parseFloat(salePrice.replace('$', '')) || null;
     };
 
     return dom;

@@ -35,6 +35,16 @@ MarketCrawler.getListings(730, 'AK-47 | Redline (Field-Tested)', true).then((lis
 }).catch((reason) => {
     console.log(reason);
 });
+// getListings and sales
+MarketCrawler.getListings(730, 'AK-47 | Redline (Field-Tested)').then((listing) => {
+    MarketCrawler.getListingSales(listing).then((sales) => {
+        console.log(sales);
+    }).catch((reason) => {
+        console.log('salesErr', reason);
+    });
+}).catch((reason) => {
+    console.log(reason);
+});
 
 // getPopular
 MarketCrawler.getPopular(0, 10).then((listings) => {

@@ -103,6 +103,26 @@ module.exports = {
         };
     },
     /**
+     * Gets the listings page sales using appID and marketHashName
+     */
+    'listingSales': function(appID, marketHashName, parameters) {
+        if( ! parameters) {
+            parameters = {};
+        }
+        if( ! parameters.currency) {
+            parameters.currency = 1;
+        }
+        if( ! parameters.count) {
+            parameters.count = 100;
+        }
+        const paramString = Object.keys(parameters).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(parameters[k])}`).join('&');
+        return new function() {
+            this.contains = Contains.json;
+            this.url = `${SCM}listings/${appID}/${encodeURIComponent(marketHashName)}/render/?${paramString}`;
+            this.base64 = encodeURIComponent(new Buffer(this.url).toString('base64'));
+        };
+    },
+    /**
      * Gets the item activity on the listings page
      */
     'itemordersactivity': function(nameID) {

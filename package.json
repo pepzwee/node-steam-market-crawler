@@ -1,6 +1,6 @@
 {
   "name": "node-steam-market-crawler",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Crawl and scrape Steam market listings for data using Node.",
   "main": "./lib/index.js",
   "scripts": {
